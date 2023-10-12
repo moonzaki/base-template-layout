@@ -1,0 +1,26 @@
+@use "./mixins" as minxins;
+
+$flex-template-name: "flex";
+
+%#{$flex-template-name} {
+    display: flex;
+
+    &-col {
+        flex-direction: column;
+    }
+
+    &-center-center {
+        justify-content: center;
+        align-items: center;
+    }
+
+    &-j-start {
+        justify-content: flex-start;
+    }
+
+    &-j-end {
+        justify-content: flex-end;
+    }
+}
+
+@include minxins.set_modifier_tag();

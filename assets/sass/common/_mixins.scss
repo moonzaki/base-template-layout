@@ -1,0 +1,36 @@
+@use "./variables" as v;
+
+$maxWidth: 1920;
+$mobMaxWidth: 645;
+
+@mixin adaptiv-font($pcSize, $mobSize) {
+    $addSize: $pcSize - $mobSize;
+    $maxWidth: $maxWidth - 645;
+    font-size: calc(
+        #{$mobSize + px} + #{$addSize} * ((100vw - 645px) / #{$maxWidth})
+    );
+}
+
+@mixin adaptiv-font-mobile($pcSize, $mobSize) {
+    $addSize: $pcSize - $mobSize;
+    $maxWidth: $mobMaxWidth - 320;
+    font-size: calc(
+        #{$mobSize + px} + #{$addSize} * ((100vw - 320px) / #{$mobMaxWidth})
+    );
+}
+
+@mixin set_modifier_tag() {
+    @each $name, $value in v.$colors {
+        %color--#{"" + $name} {
+            color: #{$value};
+        }
+
+        %background--#{"" + $name} {
+            background: #{$value};
+        }
+
+        %border--#{"" + $name} {
+            border-color: #{$value};
+        }
+    }
+}
